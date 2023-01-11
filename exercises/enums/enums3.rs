@@ -46,6 +46,7 @@ impl State {
             Message::Echo(s) => self.echo(s),
             Message::Quit => self.quit(),
         }
+        // Remember: When passing a tuple as a function argument, you'll need extra parentheses: fn function((t, u, p, l, e))
     }
 }
 
@@ -60,7 +61,7 @@ mod tests {
             position: Point { x: 0, y: 0 },
             color: (0, 0, 0),
         };
-        state.process(Message::ChangeColor((255, 0, 255))); // Remember: The extra parentheses mark a tuple type.
+        state.process(Message::ChangeColor(255, 0, 255));
         state.process(Message::Echo(String::from("hello world")));
         state.process(Message::Move(Point { x: 10, y: 15 }));
         state.process(Message::Quit);
